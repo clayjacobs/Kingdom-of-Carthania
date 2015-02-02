@@ -8,8 +8,9 @@ public Class Inventory{
 
 	public void removeItem(Item i)
 	{
+		int otherId = i.getItemId();
 		for (int x=0; x<current.size(); x++) {
-			if(i.getItemId() == current.get(x).getItemId()){
+			if(otherId == current.get(x).getItemId()){
 				current.remove(x);
 				break;
 			}

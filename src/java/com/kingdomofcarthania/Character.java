@@ -2,6 +2,8 @@ public Class Character{
 	private int xCoord;
 	private int yCoord;
 	private int currentZone;
+	private Map world;
+	private ArrayList<Zone> map;
 	private Inventory inventory;
 	private int gold;
 
@@ -27,6 +29,8 @@ public Class Character{
 		xCoord = 0;
 		yCoord = 0;
 		currentZone = 1;
+		world = new Map();
+		map = world.getZones();
 		inventory = new Inventory();
 		gold = 100;
 		followers = new ArrayList<Follower>;
@@ -44,10 +48,19 @@ public Class Character{
 	public void levelUp(){
 		level++;
 		newTitle();
+		getNewStats()
 	}
 
 	public int getLevel(){
 		return level;
+	}
+
+	//Write algorithm for getting updated Stats
+	public void getNewStats(){
+		might
+		wisdom
+		dexterity
+		toughness
 	}
 
 	public void newTitle(){
@@ -85,12 +98,22 @@ public Class Character{
 		randomBattle();
 	}
 
+	//Value will have to be negative coming into the method
 	public void changeGold(int v){
 		gold += v;
 	}
 
 	//has a random chance of starting a battle, should be higher/lower probability on the kind of terrain
 	public void randomBattle(){
-
+		if(map.get(currentZone).getStatus(xCoord, yCoord).equals("Building")){
+			break;
+		}
+		else if (map.get(currentZone).getStatus(xCoord, yCoord).equals("Grass")){
+			if(Math.floor((Math.random() * 6) + 1) == 1)
+				Battle newBattle = new Battle(level, currentZone, map);
+				break;
+			else
+				break;
+		}
 	}
 }
