@@ -17,6 +17,7 @@ public Class Character{
 	private int level;
 	private int reputation;
 	private int greatness;
+	private int greatnessNeeded;
 
 	private String title;
 
@@ -41,18 +42,48 @@ public Class Character{
 		level = 1;
 		reputation = 0;
 		greatness = 0;
+		greatnessNeeded = 100;
 		title = "Citizen of Carthania"
+	}
+
+	public int getLevel(){
+		return level;
+	}
+
+	public int getCurrentZone(){
+		return currentZone;
+	}
+
+	public ArrayList<Zone> getMap(){
+		return map;
+	}
+
+	public ArrayList<Follower> getFollowers(){
+		return followers;
+	}
+
+	public int getGreatness(){
+		return greatness;
+	}
+
+	public int getGreatnessNeeded(){
+		return greatnessNeeded;
 	}
 
 	//make new stats
 	public void levelUp(){
 		level++;
 		newTitle();
-		getNewStats()
+		getNewStats();
+		updateGreatnessNeeded();
 	}
 
-	public int getLevel(){
-		return level;
+	public void addGreatness(int xp){
+		greatness += xp;
+		if(greatness > greatnessNeeded){
+			greatness = greatness - greatnessNeeded;
+			levelUp();
+		}
 	}
 
 	//Write algorithm for getting updated Stats
@@ -61,6 +92,10 @@ public Class Character{
 		wisdom
 		dexterity
 		toughness
+	}
+
+	public void updateGreatnessNeeded(){
+		greatnessNeeded = (greatnessNeeded *1.2) + 20 + level;
 	}
 
 	public void newTitle(){
@@ -110,7 +145,7 @@ public Class Character{
 		}
 		else if (map.get(currentZone).getStatus(xCoord, yCoord).equals("Grass")){
 			if(Math.floor((Math.random() * 6) + 1) == 1)
-				Battle newBattle = new Battle(level, currentZone, map);
+				Battle newBattle = new Battle(self);
 				break;
 			else
 				break;
