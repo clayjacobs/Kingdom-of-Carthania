@@ -13,6 +13,8 @@ public Class Character{
 	private int wisdom;
 	private int dexterity;
 	private int toughness;
+	private int vigor;
+	private int maxVigor;
 
 	private int level;
 	private int reputation;
@@ -39,6 +41,8 @@ public Class Character{
 		wisdom = 10;
 		dexterity = 10;
 		toughness = 10;
+		vigor = 50;
+		maxVigor = 50;
 		level = 1;
 		reputation = 0;
 		greatness = 0;
@@ -70,6 +74,10 @@ public Class Character{
 		return greatnessNeeded;
 	}
 
+	public int getDexterity(){
+		return dexterity;
+	}
+
 	//make new stats
 	public void levelUp(){
 		level++;
@@ -92,6 +100,8 @@ public Class Character{
 		wisdom
 		dexterity
 		toughness
+		maxVigor
+		vigor = maxVigor;
 	}
 
 	public void updateGreatnessNeeded(){
@@ -146,6 +156,7 @@ public Class Character{
 		else if (map.get(currentZone).getStatus(xCoord, yCoord).equals("Grass")){
 			if(Math.floor((Math.random() * 6) + 1) == 1)
 				Battle newBattle = new Battle(self);
+				newBattle.fight();
 				break;
 			else
 				break;
