@@ -1,4 +1,4 @@
-public Class Inventory{
+public class Inventory{
 	private ArrayList<Item> current;
 
 	public Inventory()

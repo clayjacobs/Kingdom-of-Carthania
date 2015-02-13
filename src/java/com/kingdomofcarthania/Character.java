@@ -1,4 +1,4 @@
-public Class Character{
+public class Character{
 	private int xCoord;
 	private int yCoord;
 	private int currentZone;
@@ -24,8 +24,9 @@ public Class Character{
 	private String title;
 
 
-	public Character(){
-		resetCharacter();
+	public Character(int w){
+		if(w == 1)
+			resetCharacter();
 	}
 
 	public void resetCharacter(){
@@ -161,5 +162,13 @@ public Class Character{
 			else
 				break;
 		}
+	}
+
+	public boolean randomChance(int c){
+		int random = Math.floor((Math.random() * 100) + 1);
+		if(c > random || c == random)
+			return true;
+		else
+			return false;
 	}
 }
