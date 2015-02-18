@@ -1,10 +1,10 @@
+package com.kingdomofcarthania;
+
 public class Inventory{
 	private ArrayList<Item> current;
 
 	public Inventory()
-	{
-
-	}
+	{}
 
 	public void removeItem(Item i)
 	{

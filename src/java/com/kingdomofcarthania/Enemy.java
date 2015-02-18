@@ -1,3 +1,5 @@
+package com.kingdomofcarthania;
+
 public class Enemy{
 	private int might;
 	private int wisdom;
@@ -9,7 +11,7 @@ public class Enemy{
 		generateStats(i, c);
 	}
 
-	//TODO : take into account the character level and current zone to generate stats randomly within a range
+	//TODO: Run tests to see what values the enemies end up with
 	public void generateStats(int level, Character toon){
 		int combatZone = toon.getMap().get(toon.getCurrentZone()).getCombatZone();
 		double cLevel =  * ((100 + toon.getLevel()) / 100);

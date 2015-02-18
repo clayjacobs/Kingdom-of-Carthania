@@ -1,3 +1,5 @@
+package com.kingdomofcarthania;
+
 public class Character{
 	private int xCoord;
 	private int yCoord;
@@ -160,6 +162,21 @@ public class Character{
 			else
 				break;
 		}
+	}
+
+	public void takeDamage(int d){
+		vigor -= d;
+	}
+
+	public boolean alive(){
+		if(vigor > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public void heal(){
+		vigor = maxVigor;
 	}
 
 	public boolean randomChance(int c){

@@ -1,3 +1,5 @@
+package com.kingdomofcarthania;
+
 public class Item{
 	private int id;
 	private String type;
