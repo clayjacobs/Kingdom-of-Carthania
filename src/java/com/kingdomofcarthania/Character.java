@@ -24,9 +24,7 @@ public class Character{
 	private String title;
 
 
-	public Character(int w){
-		if(w == 1)
-			resetCharacter();
+	public Character(){
 	}
 
 	public void resetCharacter(){

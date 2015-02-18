@@ -106,14 +106,21 @@ public class Battle{
 		}
 		for (int i=0; i < enemies.length; i++){
 			if(enemies[i].alive()){
-				enemies[i].takeDamage(enemies[i].getToughness() - damage);
+				enemies[i].takeDamage(damage - enemies[i].getToughness());
 				if(aoe) {
 					for(int x=i+1; x < enemies.length; x++) {
-					enemies[x].takeDamage(enemies[x].getToughness() - damage);
+					enemies[x].takeDamage(damage - enemies[x].getToughness());
 					}
 				}
 				break;
 			}
+		}
+		checkEnemiesLiving();
+	}
+
+	public void checkEnemiesLiving(){
+		for(int i=0; i < enemies.length; i++){
+			enemiesAlive = enemies[i].alive();
 		}
 	}
 
@@ -161,7 +168,10 @@ public class Battle{
 
 	//Calculate how much gold was earned by a won battle
 	public int calcEarnedGold(){
-
+		if(victorious)
+			return (50) * (enemies.length) + (Math.floor(Math.random() * 100 + ((characterLevel * 1.5)(int))) + (1 * characterLevel));
+		else
+			return Math.floor(Math.random() * 100 + ((characterLevel * 1.5)(int))) + (1 * characterLevel);
 	}
 
 	public void endBattle(){
